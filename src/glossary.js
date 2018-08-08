@@ -16,3 +16,4 @@ export default class Glossary {
 
 Glossary.WORDS = 'words';
 Glossary.PHRASES = 'phrases';
+Glossary.LOREM = 'more_lorem';

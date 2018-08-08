@@ -4,7 +4,6 @@ export default function() {
     head: 'Header Title',
     subhead: 'Subhead',
     words: [
-      'test','test'
     ],
     phrases : [
     ],

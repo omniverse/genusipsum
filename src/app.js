@@ -18,6 +18,7 @@ class App extends Component {
     this.addWordItem = this.addWordItem.bind(this);
     this.deleteWordItem = this.deleteWordItem.bind(this);
     this.setCollectionState = this.setCollectionState.bind(this);
+    this.viewJSON = this.viewJSON.bind(this);
   }
 
   updateWordItem(key, index, word) {
@@ -35,7 +36,8 @@ class App extends Component {
   }
 
   deleteWordItem(key, index) {
-    const words = this.state.glossary[key].splice(index,1); //remove item
+    const words = this.state.glossary[key].slice(0); //clone
+    words.splice(index,1); //remove item
     this.setCollectionState(key, words);
   }
 
@@ -44,8 +46,13 @@ class App extends Component {
     changedStuff[key] = collection;
 
     this.setState(state => {
-      glossary: Object.assign({}, state.glossary, changedStuff)
+      const newGloss = Object.assign({}, state.glossary, changedStuff);
+      return { glossary: newGloss };
     });
+  }
+
+  viewJSON() {
+
   }
 
   render() {
@@ -57,7 +64,36 @@ class App extends Component {
           onUpdate={(index, val) => this.updateWordItem(Glossary.WORDS, index, val)}
           onDelete={(index) => this.deleteWordItem(Glossary.WORDS, index)}
           onAdd={(val) => this.addWordItem(Glossary.WORDS, val)} />
-      </div>
+        <h2>Phrases</h2>
+        <TextFields
+          items={this.state.glossary[Glossary.PHRASES]}
+          onUpdate={(index, val) => this.updateWordItem(Glossary.PHRASES, index, val)}
+          onDelete={(index) => this.deleteWordItem(Glossary.PHRASES, index)}
+          onAdd={(val) => this.addWordItem(Glossary.PHRASES, val)} />
+        <h2>Lorem Ipsum</h2>
+        <TextFields
+          items={this.state.glossary[Glossary.LOREM]}
+          onUpdate={(index, val) => this.updateWordItem(Glossary.LOREM, index, val)}
+          onDelete={(index) => this.deleteWordItem(Glossary.LOREM, index)}
+          onAdd={(val) => this.addWordItem(Glossary.LOREM, val)} />
+          <div>
+        <a
+            name={'json'}
+            value={'json'}
+            href="glossary.json"
+            >View JSON</a>
+            <a
+                name={'try'}
+                value={'try'}
+                href="try"
+                >Try It</a>
+            <a
+                name={'view'}
+                value={'view'}
+                href="ipsum.zip"
+                >Get the code</a>
+            </div>
+    </div>
     )
   }
 }
