@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Workspace from './Workspace.js'
 
@@ -27,8 +26,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to Genus Ipsum</h1>
+          <h1 className="App-title">Carpe Ipsum</h1>
         </header>
         {content}
       </div>

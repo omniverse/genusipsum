@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import WordList from './WordList.js';
+import './Workspace.css';
 
 class Workspace extends Component {
 
